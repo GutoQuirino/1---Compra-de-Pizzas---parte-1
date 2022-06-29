@@ -47,3 +47,22 @@ function cancelar(){
     c('.pizzaWindowArea').style.opacity = '0';
     setTimeout(()=>{c('.pizzaWindowArea').style.display = 'none'},500);
 }
+
+c('.pizzaInfo--qtmenos').addEventListener('click',()=>{
+    if(modalQt > 1) {
+        modalQt--;
+        c('.pizzaInfo--qt').innerHTML = modalQt;
+    }   
+})
+
+c('.pizzaInfo--qtmais').addEventListener('click',()=>{
+    modalQt++;
+    c('.pizzaInfo--qt').innerHTML = modalQt;
+})
+
+cs('.pizzaInfo--size').forEach((size,sizeIndex)=>{ 
+    size.addEventListener('click', ()=>{
+        c('.pizzaInfo--size.selected').classList.remove('selected');
+        size.classList.add('selected');
+    })
+})
