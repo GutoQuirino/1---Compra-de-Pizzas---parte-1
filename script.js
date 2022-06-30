@@ -72,9 +72,7 @@ cs('.pizzaInfo--size').forEach((size,sizeIndex)=>{
 
 c('.pizzaInfo--addButton').addEventListener('click', ()=>{ //localiza a div e cria a funçao de click
     let size = parseInt(c('.pizzaInfo--size.selected').getAttribute('data-key'));
-
     let identif = pizzaJson[modalKey].id+'.'+size;
-
     let verific = cart.findIndex((item)=>item.identif == identif);
 
     if(verific > -1) {
@@ -87,7 +85,19 @@ c('.pizzaInfo--addButton').addEventListener('click', ()=>{ //localiza a div e cr
             qt:modalQt
         });
     }
-
+    atualizaCart();
     cancelar();
-    
-});    
+}); 
+
+function atualizaCart(){
+    if(cart.length > 0){
+        c('aside').classList.add('show');
+        for(let i in cart){
+            let pizzaItem = pizzaJson.find((item)=>item.id == cart[i].id);
+            alert(pizzaItem.name);
+        }
+
+    }   else {
+        c('aside').classList.remove('show');
+    }
+}
